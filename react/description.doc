@@ -1,0 +1,6 @@
+1、安装babel命令行工具(需要npm)
+	npm install --global babel-cli
+	npm install babel-preset-react
+
+2、然后把你的 modules/helloworld.js 文件转成标准的 JavaScript:
+	babel --presets react modules --watch --out-dir build
