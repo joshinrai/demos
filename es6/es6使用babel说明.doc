@@ -1,0 +1,4 @@
+babel将es6编译为es5命令:
+	babel <文件夹> -o <文件名>
+	举个栗子:
+	babel test -o test.js 
