@@ -13,6 +13,9 @@ class App extends Component {
         <p className="App-intro">
           编辑<code>src/App.js</code>做修改
         </p>
+          just do it , if you can 
+        <p>
+        </p>
       </div>
     );
   }
