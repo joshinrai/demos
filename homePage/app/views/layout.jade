@@ -1,0 +1,14 @@
+doctype html
+html
+    head
+        title="joshinrai's homePage"
+        meta(keyword="joshinrai homepage express react node jade")
+
+        base(href="/homePage")
+
+        //导入react,貌似在jade中不能直接导入本地js文件,因为jade需要编译而服务没有把src的文件加载
+        //script(src="app/script/common/react.js")
+        //script(src="/app/script/common/react-dom.js")
+        script(src="https://npmcdn.com/babel-core@5.8.38/browser.min.js")
+    body
+        block content
