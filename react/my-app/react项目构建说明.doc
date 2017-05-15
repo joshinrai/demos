@@ -1,0 +1,9 @@
+react创建项目
+	$ cnpm install -g create-react-app
+	$ create-react-app my-app
+	$ cd my-app/
+	$ npm start
+
+	在浏览器中打开 http://localhost:3000/ 
+
+	尝试修改 src/App.js 文件代码
