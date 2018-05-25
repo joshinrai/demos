@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transform</title>
+	<style>
+		html, body, .container{
+			height: 100%;
+			width: 100%;
+			margin: 0;
+		}
+		.container{
+			display: flex;
+		}
+		.inner{
+			position: relative;
+			width: 500px;
+			height: 800px;
+			margin: auto;
+			background-color: #fff;
+			overflow: hidden;
+		}
+		.content{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: #933;
+			transform: translateX(-100%);
+			transition: transform 1s ease-in-out;
+		}
+		.content:nth-child(1){
+			background-color: #999;
+		}
+		.content:nth-child(2){
+			background-color: #EDAC33;
+		}
+		.content:nth-child(3){
+			background-color: #F57D72;
+		}
+		.button{
+			font-size: 50px;
+			height: 70px;
+			width: 70px;
+			margin: auto 0;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="button"><</div>
+		<div class="inner">
+			<div class="content">1</div>
+			<div class="content">2</div>
+			<div class="content">3</div>
+		</div>
+		<div class="button">></div>
+	</div>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+	<script>
+		(function () {
+			let currentIndex = 1
+			let length = $('.content').length
+			setPageStyle(currentIndex, length)
+			let clickBool = true
+
+			function setPageStyle(currentIndex, length, option) {
+				let currentPage = $(`.content:nth-child(${currentIndex})`)
+				
+				let prevIndex = (function (currentIndex) {
+					return currentIndex === 1 ? length : --currentIndex
+				})(currentIndex)
+
+				let nextIndex = (function (currentIndex) {
+					return currentIndex < length ? ++currentIndex : 1	
+				})(currentIndex)
+
+				let nextPage = $(`.content:nth-child(${nextIndex})`)
+				let prevPage = $(`.content:nth-child(${prevIndex})`)
+
+				let bool = option === 'next' ? true : false
+				let prevStyle = bool ? 'inline-block' : 'none'
+				let nextStyle = bool ? 'none' : 'inline-block'
+				prevPage.css({'transform': 'translateX(-100%)', 'display': prevStyle})
+				currentPage.css({'transform': 'translateX(0)', 'display': 'inline-block'})
+				nextPage.css({'transform': 'translateX(100%)', 'display': nextStyle})
+
+				setTimeout(function () {$('.content').css('display', 'inline-block')}, 1000)
+			}
+
+			
+
+			$('.button:nth-child(1)').on('click', function () {
+				$('.content').css('display', 'inline-block')
+				currentIndex = currentIndex === 1 ? length : --currentIndex
+				setPageStyle(currentIndex, length, 'prev')
+			})
+			$('.button:last-child').on('click', function () {
+				$('.content').css('display', 'inline-block')
+				currentIndex = currentIndex < length ? ++currentIndex : 1
+				setPageStyle(currentIndex, length, 'next')
+			})
+		})()
+	</script>
+</body>
+</html>
