@@ -81,7 +81,7 @@
 				let nextPage = $(`.content:nth-child(${nextIndex})`)
 				let prevPage = $(`.content:nth-child(${prevIndex})`)
 
-				let bool = option === 'next' ? true : false
+				let bool = option === 'next'
 				let prevStyle = bool ? 'inline-block' : 'none'
 				let nextStyle = bool ? 'none' : 'inline-block'
 				prevPage.css({'transform': 'translateX(-100%)', 'display': prevStyle})
